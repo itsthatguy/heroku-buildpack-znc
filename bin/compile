@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
-echo "SCHWAPAHPAH\!"
 
 set -e
 set -o pipefail
@@ -27,14 +26,12 @@ fi
 # configure
 if [ -f configure ]; then
   echo "-----> Configuring"
-  sed -i 's/ac_default_prefix\=\/usr\/local/ac_default_prefix\=\/app\/local/g' configure
+  sed -i 's/ac_default_prefix\=\/usr\/local/ac_default_prefix\=\/app\/local/g' configure | indent
   ./configure --enable-run-from-source 2>&1 | indent
 fi
 
 # make
 echo "-----> Compiling with Make"
-echo 2
-echo &1
 make 2>&1 | indent
 echo "-----> Installing"
 make install | indent
