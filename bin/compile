@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
+echo "SCHWAPAHPAH\!"
 
 set -e
 set -o pipefail
@@ -33,4 +34,5 @@ fi
 echo "-----> Compiling with Make"
 make 2>&1 | indent
 echo "-----> Installing"
-make install | indent
+# mkdir -p /usr/local/include/znc
+# make install | indent
