@@ -27,12 +27,14 @@ fi
 # configure
 if [ -f configure ]; then
   echo "-----> Configuring"
+  sed -i 's/ac_default_prefix\=\/usr\/local/ac_default_prefix\=\/app\/local/g' configure
   ./configure --enable-run-from-source 2>&1 | indent
 fi
 
 # make
 echo "-----> Compiling with Make"
+echo 2
+echo &1
 make 2>&1 | indent
 echo "-----> Installing"
-# mkdir -p /usr/local/include/znc
-# make install | indent
+make install | indent
